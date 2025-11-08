@@ -122,6 +122,50 @@ Delete a server.
 HetznerLaravel::servers()->delete('12345');
 ```
 
+### `metrics(string $serverId, array $parameters)`
+
+Get server metrics for monitoring and analysis.
+
+**Parameters:**
+- `serverId` (string): Server ID
+- `type` (string, required): Metric type (`cpu`, `disk`, `network`)
+- `start` (string, required): Start time in ISO 8601 format (e.g., `2024-01-01T00:00:00Z`)
+- `end` (string, required): End time in ISO 8601 format (e.g., `2024-01-01T01:00:00Z`)
+
+**Example:**
+```php
+use Boci\HetznerLaravel\Facades\HetznerLaravel;
+
+// Get CPU metrics for the last hour
+$metrics = HetznerLaravel::servers()->metrics('12345', [
+    'type' => 'cpu',
+    'start' => now()->subHour()->toIso8601ZuluString(),
+    'end' => now()->toIso8601ZuluString(),
+]);
+
+// Return metrics as JSON response
+return response()->json($metrics->toArray());
+```
+
+**Example in Controller:**
+```php
+public function getServerMetrics($serverId)
+{
+    $metrics = HetznerLaravel::servers()->metrics($serverId, [
+        'type' => 'cpu',
+        'start' => now()->subHour()->toIso8601ZuluString(),
+        'end' => now()->toIso8601ZuluString(),
+    ]);
+
+    return response()->json($metrics->toArray());
+}
+```
+
+**Available Metric Types:**
+- `cpu`: CPU usage metrics
+- `disk`: Disk I/O metrics
+- `network`: Network traffic metrics
+
 ## Server Actions
 
 The servers resource also provides access to server actions:
