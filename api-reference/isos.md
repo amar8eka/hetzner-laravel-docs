@@ -139,7 +139,7 @@ if ($ubuntuIso) {
     // Create server with ISO attached
     $server = HetznerLaravel::servers()->create([
         'name' => 'iso-server',
-        'server_type' => 'cpx11',
+        'server_type' => 'cpx22',
         'image' => 'ubuntu-24.04',
         'location' => 'nbg1',
         'iso' => $ubuntuIso->id,

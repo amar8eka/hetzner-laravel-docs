@@ -43,7 +43,7 @@ class ServerController extends Controller
         try {
             $server = HetznerLaravel::servers()->create([
                 'name' => 'my-first-server',
-                'server_type' => 'cpx11', // 1 vCPU, 2 GB RAM
+                'server_type' => 'cpx22',
                 'image' => 'ubuntu-24.04',
                 'location' => 'nbg1', // Nuremberg
                 'ssh_keys' => ['my-ssh-key'], // Optional: your SSH key name
@@ -101,7 +101,7 @@ class ServerTest extends TestCase
     {
         $server = HetznerLaravel::servers()->create([
             'name' => 'test-server-' . time(),
-            'server_type' => 'cpx11',
+            'server_type' => 'cpx22',
             'image' => 'ubuntu-24.04',
             'location' => 'nbg1',
         ]);

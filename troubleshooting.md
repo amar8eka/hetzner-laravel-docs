@@ -84,7 +84,7 @@ This guide helps you resolve common issues when using the Hetzner Laravel packag
 2. **Use Correct Server Type Names**
    ```php
    // Correct format
-   'server_type' => 'cpx11'  // Not 'CPX11' or 'cpx-11'
+   'server_type' => 'cpx22'  // Not 'CPX22' or 'cpx-22'
    ```
 
 3. **Check Location Availability**
@@ -273,7 +273,7 @@ This guide helps you resolve common issues when using the Hetzner Laravel packag
    // Then use the volume ID
    $server = HetznerLaravel::servers()->create([
        'name' => 'my-server',
-       'server_type' => 'cpx11',
+       'server_type' => 'cpx22',
        'image' => 'ubuntu-24.04',
        'location' => 'nbg1',
        'volumes' => [$volume->id],

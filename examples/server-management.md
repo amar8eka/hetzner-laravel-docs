@@ -439,7 +439,7 @@ class ServerTemplateService
     {
         return [
             'name' => $name,
-            'server_type' => 'cpx11', // 1 vCPU, 2 GB RAM
+            'server_type' => 'cpx22',
             'image' => 'ubuntu-24.04',
             'location' => $location,
             'ssh_keys' => ['my-ssh-key'],

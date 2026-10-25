@@ -169,7 +169,7 @@ $sshKey = HetznerLaravel::sshKeys()->retrieve('12345');
 // Create server with SSH key
 $server = HetznerLaravel::servers()->create([
     'name' => 'my-server',
-    'server_type' => 'cpx11',
+    'server_type' => 'cpx22',
     'image' => 'ubuntu-24.04',
     'location' => 'nbg1',
     'ssh_keys' => [$sshKey->id],

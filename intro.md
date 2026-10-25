@@ -65,7 +65,7 @@ use Boci\HetznerLaravel\Facades\HetznerLaravel;
 // Create a new server
 $server = HetznerLaravel::servers()->create([
     'name' => 'my-web-server',
-    'server_type' => 'cpx11',
+    'server_type' => 'cpx22',
     'image' => 'ubuntu-24.04',
     'location' => 'nbg1',
     'ssh_keys' => ['my-ssh-key'],

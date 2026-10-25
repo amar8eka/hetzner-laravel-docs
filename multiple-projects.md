@@ -64,7 +64,7 @@ $servers = HetznerLaravel::project('staging')->servers()->list();
 
 $response = HetznerLaravel::project('staging')->servers()->create([
     'name' => 'staging-web-1',
-    'server_type' => 'cpx11',
+    'server_type' => 'cpx22',
     'image' => 'ubuntu-24.04',
     'location' => 'nbg1',
 ]);

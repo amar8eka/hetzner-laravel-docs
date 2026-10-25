@@ -109,6 +109,32 @@ Delete a network.
 HetznerLaravel::networks()->delete('12345');
 ```
 
+### `members(string $networkId, array $parameters = [])`
+
+List the servers and load balancers attached to a network.
+
+**Parameters:**
+- `networkId` (string): Network ID
+- `type` (string|array, optional): `server` and/or `load_balancer`
+- `subnet` (string|array, optional): Filter by subnet, e.g. `10.0.1.0/24`
+- `status` (string|array, optional): `ok`, `attaching`, `detaching`, `updating` or `error`
+- `sort` (string, optional): `id`, `type`, `status` or `ip`
+- `page`, `per_page` (int, optional): Pagination
+
+**Example:**
+```php
+$response = HetznerLaravel::networks()->members('12345', [
+    'type' => ['server', 'load_balancer'],
+    'status' => 'ok',
+]);
+
+foreach ($response->members() as $member) {
+    echo "{$member['type']} {$member['id']}: {$member['ip']} ({$member['subnet']})\n";
+}
+
+$total = $response->pagination()['total_entries'];
+```
+
 ## Network Actions
 
 ### `actions()`

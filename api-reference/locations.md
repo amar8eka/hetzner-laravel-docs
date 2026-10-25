@@ -113,7 +113,7 @@ foreach ($germanLocations as $location) {
 
 ```php
 $locations = HetznerLaravel::locations()->list();
-$serverType = 'cpx11';
+$serverType = 'cpx22';
 $image = 'ubuntu-24.04';
 
 foreach ($locations as $location) {

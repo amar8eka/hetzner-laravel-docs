@@ -38,7 +38,7 @@ Get details of a specific server type.
 
 **Example:**
 ```php
-$serverType = HetznerLaravel::serverTypes()->retrieve('cpx11');
+$serverType = HetznerLaravel::serverTypes()->retrieve('cpx22');
 echo $serverType->name; // Server type name
 echo $serverType->description; // Server type description
 echo $serverType->cores; // Number of CPU cores
