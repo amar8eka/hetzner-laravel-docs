@@ -281,7 +281,7 @@ $volume = HetznerLaravel::volumes()->retrieve('12345');
 // First attach volume to server, then create image from server
 $server = HetznerLaravel::servers()->create([
     'name' => 'image-creation-server',
-    'server_type' => 'cpx11',
+    'server_type' => 'cpx22',
     'image' => 'ubuntu-24.04',
     'location' => 'nbg1',
     'volumes' => [$volume->id],

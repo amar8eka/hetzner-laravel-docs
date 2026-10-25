@@ -22,14 +22,17 @@ Get a list of all actions.
 ```php
 use Boci\HetznerLaravel\Facades\HetznerLaravel;
 
-// Get all actions
-$actions = HetznerLaravel::actions()->list();
-
-// Get actions with filters
+// Get multiple actions by ID
 $actions = HetznerLaravel::actions()->list([
-    'status' => 'running',
-    'per_page' => 50,
+    'id' => [1, 2, 3],
 ]);
+```
+
+:::note
+Hetzner no longer supports listing all actions. Calling `list()` without `id` returns `410 Gone`. Use the actions of a resource instead, for example `HetznerLaravel::servers()->actions()->list($serverId)`.
+:::
+
+```php
 ```
 
 ### `retrieve(string $actionId)`
@@ -67,7 +70,7 @@ echo $action->progress; // Action progress
 // Create server
 $server = HetznerLaravel::servers()->create([
     'name' => 'my-server',
-    'server_type' => 'cpx11',
+    'server_type' => 'cpx22',
     'image' => 'ubuntu-24.04',
     'location' => 'nbg1',
 ]);

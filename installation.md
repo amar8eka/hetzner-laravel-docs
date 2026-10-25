@@ -10,8 +10,8 @@ This guide will walk you through installing and configuring the Hetzner Laravel 
 
 Before installing Hetzner Laravel, make sure your environment meets these requirements:
 
-- **PHP**: 8.1 or higher
-- **Laravel**: 9.0 or higher
+- **PHP**: 8.2 or higher (8.3 or higher for Laravel 13)
+- **Laravel**: 12 or 13
 - **Composer**: Latest version
 - **Hetzner Cloud API Token**: Required for authentication
 
@@ -59,13 +59,23 @@ If you published the configuration file, you can customize the settings:
 // config/hetzner-laravel.php
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
-    'token' => env('HETZNER_TOKEN'),
+
+    'default' => env('HETZNER_PROJECT', 'default'),
+
+    'projects' => [
+
+        'default' => [
+            'token' => env('HETZNER_TOKEN'),
+            'base_url' => env('HETZNER_BASE_URL', 'https://api.hetzner.cloud'),
+        ],
+
+    ],
+
 ];
 ```
+
+Managing more than one Hetzner Cloud project? Add a project with its own token per project, see [Multiple Projects](./multiple-projects).
 
 ## Usage Methods
 
@@ -79,7 +89,7 @@ use Boci\HetznerLaravel\Facades\HetznerLaravel;
 // Create a server
 $server = HetznerLaravel::servers()->create([
     'name' => 'my-server',
-    'server_type' => 'cpx11',
+    'server_type' => 'cpx22',
     'image' => 'ubuntu-24.04',
     'location' => 'nbg1',
 ]);
@@ -100,7 +110,7 @@ class ServerController
     {
         $response = $this->hetznerClient->servers()->create([
             'name' => 'my-server',
-            'server_type' => 'cpx11',
+            'server_type' => 'cpx22',
             'image' => 'ubuntu-24.04',
             'location' => 'nbg1',
         ]);

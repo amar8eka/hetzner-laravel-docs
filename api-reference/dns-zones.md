@@ -217,6 +217,24 @@ Delete a DNS record.
 HetznerLaravel::dnsZones()->rrsets()->delete('example.com', 'record-id');
 ```
 
+### `rrsets()->updateRecords(string $zoneIdOrName, string $rrName, string $rrType, array $parameters)`
+
+Update the comments of existing record values without changing the values themselves.
+
+**Example:**
+```php
+$response = HetznerLaravel::dnsZones()->rrsets()->updateRecords('example.com', 'www', 'A', [
+    'records' => [
+        [
+            'value' => '192.168.1.1',
+            'comment' => 'Primary web server',
+        ],
+    ],
+]);
+
+echo $response->action()->status();
+```
+
 ## Zone Actions
 
 ### `actions()`

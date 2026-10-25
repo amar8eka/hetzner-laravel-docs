@@ -41,7 +41,7 @@ Create a new server.
 
 **Required Parameters:**
 - `name` (string): Server name
-- `server_type` (string): Server type (e.g., 'cpx11', 'cpx21')
+- `server_type` (string): Server type (e.g., 'cpx22', 'cpx32')
 - `image` (string): Image name or ID
 - `location` (string): Location name or ID
 
@@ -60,7 +60,7 @@ Create a new server.
 ```php
 $server = HetznerLaravel::servers()->create([
     'name' => 'my-web-server',
-    'server_type' => 'cpx11',
+    'server_type' => 'cpx22',
     'image' => 'ubuntu-24.04',
     'location' => 'nbg1',
     'ssh_keys' => ['my-ssh-key'],
@@ -201,7 +201,7 @@ All server methods return response objects with the following properties:
 - `public_net` (object): Public network configuration
 - `private_net` (array): Private network configuration
 - `server_type` (object): Server type details
-- `datacenter` (object): Datacenter information
+- `location` (object): Location information (Hetzner no longer returns `datacenter` since 1 July 2026)
 - `image` (object): Image details
 - `iso` (object): ISO details (if attached)
 - `rescue_enabled` (bool): Rescue mode status
