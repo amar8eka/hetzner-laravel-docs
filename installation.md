@@ -59,13 +59,23 @@ If you published the configuration file, you can customize the settings:
 // config/hetzner-laravel.php
 <?php
 
-/*
- * You can place your custom package configuration in here.
- */
 return [
-    'token' => env('HETZNER_TOKEN'),
+
+    'default' => env('HETZNER_PROJECT', 'default'),
+
+    'projects' => [
+
+        'default' => [
+            'token' => env('HETZNER_TOKEN'),
+            'base_url' => env('HETZNER_BASE_URL', 'https://api.hetzner.cloud'),
+        ],
+
+    ],
+
 ];
 ```
+
+Managing more than one Hetzner Cloud project? Add a project with its own token per project, see [Multiple Projects](./multiple-projects).
 
 ## Usage Methods
 
